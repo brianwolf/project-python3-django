@@ -1,5 +1,9 @@
 run r:
-	python manage.py runserver localhost:8000
+	gunicorn \
+    	-b localhost:8000 \
+    	--workers=1 \
+    	--threads=5 \
+    	core.wsgi
 
 
 migrate m:
