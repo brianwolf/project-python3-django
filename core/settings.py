@@ -10,12 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
+import sys
 from pathlib import Path
 
 from decouple import Csv, config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# To works django apps into app folder
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,7 +36,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(str))
 
 # Application definition
 INSTALLED_APPS = [
-    'example.apps.ExampleConfig',
+    'apps.example.apps.ExampleConfig',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

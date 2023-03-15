@@ -16,4 +16,3 @@ make-makemigrations mm:
 
 create-user:
 	python manage.py createsuperuser
-
