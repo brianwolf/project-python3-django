@@ -152,7 +152,7 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': config('LOG_LEVEL', default='INFO'),
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': config('LOG_PATH', default='/tmp/django.log'),
             'formatter': 'verbose',
             'when': 'D',

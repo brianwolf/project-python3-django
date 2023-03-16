@@ -9,6 +9,5 @@ logger = logging.getLogger(__name__)
 def index(request):
 
     VERSION = config("VERSION", cast=str)
-
     logger.info(f'Version: {VERSION}')
     return JsonResponse({'version': VERSION})

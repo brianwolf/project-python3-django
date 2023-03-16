@@ -39,6 +39,3 @@ class ErrorHandlerMiddleware:
 
             logger.warning(f'{exception.code} -> {exception.msj}')
             return JsonResponse(exception.to_json(), status=409)
-
-        logger.exception(exception)
-        return HttpResponse("Error processing the request.", status=500)
