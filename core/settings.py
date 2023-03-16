@@ -154,12 +154,19 @@ LOGGING = {
             'level': config('LOG_LEVEL', default='INFO'),
             'class': 'logging.FileHandler',
             'filename': config('LOG_PATH', default='/tmp/django.log'),
+            'formatter': 'verbose',
+            'when': 'D',
+            'interval': 1,
+            'backupCount': config('LOG_BACKUP_PATH', default=3, cast=int),
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
             'formatter': 'verbose'
         },
     },
     'loggers': {
         'root': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': config('LOG_LEVEL', default='INFO'),
             'propagate': True,
         },

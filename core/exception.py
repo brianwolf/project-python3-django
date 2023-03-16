@@ -33,6 +33,11 @@ class ErrorHandlerMiddleware:
     def process_exception(self, request, exception):
 
         if type(exception) == AppException:
+
+            if exception.exception:
+                logger.exception(exception.exception)
+
+            logger.warning(f'{exception.code} -> {exception.msj}')
             return JsonResponse(exception.to_json(), status=409)
 
         logger.exception(exception)

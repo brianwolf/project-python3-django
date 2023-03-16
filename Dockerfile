@@ -6,18 +6,22 @@ ARG ARG_VERSION=local
 
 ENV VERSION=${ARG_VERSION}
 ENV TZ=America/Argentina/Buenos_Aires
-ENV DEBUG=True
-ENV ALLOWED_HOSTS=0.0.0.0
-ENV SQLITE_PATH=db.sqlite3
+ENV GUNICORN_HOST=0.0.0.0
+ENV GUNICORN_PORT=8000
+ENV GUNICORN_THREADS=5
 
 CMD python manage.py migrate && gunicorn \
-    -b 0.0.0.0:8000 \
+    -b ${GUNICORN_HOST}:${GUNICORN_PORT} \
     --workers=1 \
-    --threads=5 \
+    --threads=${GUNICORN_THREADS} \
     core.wsgi
 
 COPY requirements.txt ./
 RUN pip install -r requirements.txt --upgrade pip
 RUN rm -fr requirements.txt
 
-COPY . .
+COPY manage.py .
+COPY core/ .
+COPY apps/ .
+COPY templates/ .
+COPY .env .
