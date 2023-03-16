@@ -1,8 +1,11 @@
+import logging
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict
 
 from django.http import HttpResponse, JsonResponse
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -32,4 +35,5 @@ class ErrorHandlerMiddleware:
         if type(exception) == AppException:
             return JsonResponse(exception.to_json(), status=409)
 
+        logger.exception(exception)
         return HttpResponse("Error processing the request.", status=500)
