@@ -23,12 +23,9 @@ from core import views
 
 swagger_schema_view = get_schema_view(
     openapi.Info(
-        title="Snippets API",
+        title="Django API",
         default_version='v1',
-        description="Test description",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@snippets.local"),
-        license=openapi.License(name="BSD License"),
+        description="Template Django project",
     ),
     public=True,
     permission_classes=[permissions.AllowAny],
@@ -41,12 +38,7 @@ urlpatterns = [
     path('', views.index),
 
     # SWAGGER
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$',
-            swagger_schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    re_path(r'^docs/$', swagger_schema_view.with_ui('swagger',
-            cache_timeout=0), name='schema-swagger-ui'),
-    re_path(r'^redoc/$', swagger_schema_view.with_ui('redoc',
-            cache_timeout=0), name='schema-redoc'),
+    re_path('docs/', swagger_schema_view.with_ui('swagger')),
 
     # APPS
     path('api/v1/examples/', include('example.urls')),

@@ -1,12 +1,11 @@
 import json
 
 from django.http import HttpResponse, JsonResponse
-from django.views import View
-
 from example import dto, service
+from rest_framework.views import APIView
 
 
-class Proxy(View):
+class Proxy(APIView):
 
     def get(self, request, id=None):
         if id == None:

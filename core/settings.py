@@ -47,12 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}
-
-
 MIDDLEWARE = [
     'core.exception.ErrorHandlerMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'core.urls'
 
