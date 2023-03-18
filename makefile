@@ -16,3 +16,11 @@ make-makemigrations mm:
 
 create-user:
 	python manage.py createsuperuser
+
+
+test t:
+	python manage.py test
+
+
+coverage c:
+	coverage html
