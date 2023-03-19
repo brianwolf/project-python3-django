@@ -21,7 +21,6 @@ RUN pip install -r requirements.txt --upgrade pip
 RUN rm -fr requirements.txt
 
 COPY manage.py .
-COPY core/ .
-COPY apps/ .
-COPY templates/ .
+COPY core/ core/
+COPY apps/ apps/
 COPY .env .

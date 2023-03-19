@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  project-python-django:
+    build: ./
+    environment:
+      - VERSION=local
+      - DEBUG=True
+      - ALLOWED_HOSTS=127.0.0.1,localhost,0.0.0.0
+      - SQLITE_PATH=db.sqlite3
+      - LOG_LEVEL=INFO
+      - LOG_PATH=/tmp/django.log
+      - LOG_BACKUP_COUNT=3
+    ports:
+      - 8000:8000 
