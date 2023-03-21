@@ -9,3 +9,6 @@ class Example:
     decimal: float
     id: int = None
     date: datetime = field(default=datetime.now())
+
+    def __eq__(self, __o: object) -> bool:
+        return self.id == __o.id

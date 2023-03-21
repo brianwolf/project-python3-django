@@ -10,7 +10,7 @@ migrate m:
 	python manage.py migrate
 
 
-make-makemigrations mm:
+makemigrations mm:
 	python manage.py makemigrations $(app)
 
 
@@ -23,4 +23,6 @@ test t:
 
 
 coverage c:
+	coverage run --omit=*/env/*,*/migrations/*,*/__init__.py,manage.py,*/core/* manage.py test
+	coverage report -m
 	coverage html
