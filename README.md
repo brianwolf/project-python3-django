@@ -7,13 +7,12 @@
 ## :gear: Requisitos
 
 * python 3
-* virtualenv
 
 ## :tada: Uso
 
 ```bash
 # Creacion del virtual env
-virtualenv -p python3 env
+python3 -m venv env
 
 # Activar el virtual env
 . env/bin/activate
