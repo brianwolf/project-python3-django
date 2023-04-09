@@ -14,10 +14,15 @@ def example_to_json(e: Example) -> dict[str, object]:
 
 
 def json_to_example(d: dict[str, object]) -> Example:
-    return Example(
+
+    e = Example(
         string=d['string'],
         integer=d['integer'],
         decimal=d['decimal'],
-        id=d.get(id, None),
-        date=datetime.fromisoformat(d['date']),
+        id=d.get('id', None),
     )
+
+    if 'date' in d:
+        e.date = datetime.fromisoformat(d['date'])
+
+    return e
