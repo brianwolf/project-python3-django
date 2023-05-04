@@ -19,7 +19,6 @@ def json_to_example(d: dict[str, object]) -> Example:
         string=d['string'],
         integer=d['integer'],
         decimal=d['decimal'],
-        id=d.get('id', None),
     )
 
     if 'date' in d:

@@ -35,7 +35,7 @@ swagger_schema_view = get_schema_view(
 urlpatterns = [
     # DJANGO
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.Root.as_view()),
 
     # SWAGGER
     re_path('docs/', swagger_schema_view.with_ui('swagger')),

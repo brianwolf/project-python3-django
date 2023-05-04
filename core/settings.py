@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'django-insecure-6+dh9d=dn(v1w(_(#5(tn7@*(pz1d7pv#f5x2ps3dlu^lhtn#j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(str))
 
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -147,7 +147,7 @@ LOGGING = {
         'file': {
             'level': config('LOG_LEVEL', default='INFO'),
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': config('LOG_PATH', default='/tmp/django.log'),
+            'filename': config('LOG_PATH', default='django.log'),
             'formatter': 'verbose',
             'when': 'D',
             'interval': 1,

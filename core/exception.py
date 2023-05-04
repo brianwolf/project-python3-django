@@ -1,9 +1,9 @@
 import logging
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict
+from typing import Dict, Optional
 
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 @dataclass
 class AppException(Exception):
     code: Enum
-    msj: str = None
-    exception: Exception = None
+    msj: Optional[str] = None
+    exception: Optional[Exception] = None
 
     def to_json(self) -> Dict[str, object]:
         d = {'code': self.code.value, 'msj': self.msj}
@@ -30,7 +30,7 @@ class ErrorHandlerMiddleware:
         response = self.get_response(request)
         return response
 
-    def process_exception(self, request, exception):
+    def process_exception(self, _, exception):
 
         if type(exception) == AppException:
 

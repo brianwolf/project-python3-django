@@ -1,6 +1,8 @@
 FROM python:3.10-slim
 
-WORKDIR /home/src
+RUN useradd -ms /bin/bash nonroot
+USER nonroot
+WORKDIR /home/nonroot/src
 
 ARG ARG_VERSION=local
 

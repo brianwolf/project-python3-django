@@ -21,7 +21,9 @@ python3 -m venv env
 pip install -r requirements.txt
 
 # Ejecutar
-python manage.py runserver
+make mm
+make m
+make r
 ```
 
 ---
